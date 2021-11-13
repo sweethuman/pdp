@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         var v1 = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14));
         var v2 = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14));
         var buffer = new Buffer();
@@ -18,7 +18,5 @@ public class Main {
 
         consumer.start();
         producer.start();
-        producer.join();
-        consumer.join();
     }
 }
