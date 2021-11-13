@@ -13,8 +13,8 @@ public class Bank {
     public List<Account> accounts;
     private static final int AMOUNT_THREADS = 10;
     private static final int AMOUNT_ACCOUNTS = 100;
-    private static final int AMOUNT_OPERATION = 1000;
-    private static final int INIT_BALANCE = 500;
+    private static final int AMOUNT_OPERATION = 10000;
+    private static final int INIT_BALANCE = 5000;
 
     private Lock mtx = new ReentrantLock();
     private boolean check = false;
@@ -34,7 +34,7 @@ public class Bank {
                 continue;
             }
 
-            int sum = r.nextInt(INIT_BALANCE / 2);
+            int sum = r.nextInt(INIT_BALANCE / 500);
             String operationOutput = accounts.get(accId).makeTransfer(accounts.get(accId2), sum);
             System.out.println("[Thread " + threadId + "]:" + operationOutput);
         }

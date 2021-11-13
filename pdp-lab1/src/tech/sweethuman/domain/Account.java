@@ -20,8 +20,8 @@ public class Account {
     }
 
     public String makeTransfer(Account receiver, int sum) {
-        if (sum > balance || uid == receiver.uid) {
-            return "Not a valid transfer!";
+        if (uid == receiver.uid) {
+            return "The accounts are the same!";
         }
         if (this.uid < receiver.uid) {
             this.mtx.lock();
@@ -29,6 +29,17 @@ public class Account {
         } else {
             receiver.mtx.lock();
             this.mtx.lock();
+        }
+
+        if (sum > balance) {
+            if (this.uid < receiver.uid) {
+                receiver.mtx.unlock();
+                this.mtx.unlock();
+            } else {
+                this.mtx.unlock();
+                receiver.mtx.unlock();
+            }
+            return "Not a valid transfer!";
         }
 
         balance -= sum;
