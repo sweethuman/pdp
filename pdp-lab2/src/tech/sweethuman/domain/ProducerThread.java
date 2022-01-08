@@ -24,11 +24,6 @@ public class ProducerThread extends Thread {
             var product = vector1.get(i) * vector2.get(i);
             buffer.put(product);
         }
-        try {
-            sleep(250);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         System.out.println("Finished producing!");
     }
 }

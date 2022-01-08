@@ -12,7 +12,7 @@ public class Main {
         int min = 1;
         int max = 10;
         int SIZE_OF_MATRIX = 2000;
-        int NUMBER_OF_THREADS = 10;
+        int NUMBER_OF_THREADS = 2;
         int NUMBER_OF_TASKS = 20;
 
         // Generate 2 random matrices

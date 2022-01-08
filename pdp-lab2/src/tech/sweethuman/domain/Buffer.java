@@ -27,6 +27,7 @@ public class Buffer {
         lock.lock();
         try {
             if (queue.isEmpty()) {
+                System.out.println("Consumer is waiting");
                 condition.await();
             }
             var value = queue.poll();
