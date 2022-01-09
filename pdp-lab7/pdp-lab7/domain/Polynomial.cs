@@ -5,6 +5,7 @@ using System.Text;
 
 namespace pdp_lab7.domain
 {
+    [Serializable()]
     public class Polynomial
     {
         private List<int> coefficients;
