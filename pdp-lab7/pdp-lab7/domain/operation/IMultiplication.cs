@@ -1,6 +1,8 @@
-namespace pdp_lab5.domain.operation;
 
-public interface IMultiplication
+namespace pdp_lab7.domain.operation
 {
-    Polynomial Run(Polynomial p1, Polynomial p2);
+    public interface IMultiplication
+    {
+        Polynomial Run(Polynomial p1, Polynomial p2);
+    }
 }
