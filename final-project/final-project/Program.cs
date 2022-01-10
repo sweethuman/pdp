@@ -29,9 +29,21 @@ static class Program
         Console.WriteLine("Running Threads");
         var watch = new Stopwatch();
         var image = Image.FromFile(file);
-        var houghTransform = new HoughTransform(image);
-        houghTransform.AddPoints();
-        List<HoughLine> lines = houghTransform.GetLines();
+        var transform = new HoughTransform(image);
+        List<Task> tasks = new List<Task>();
+        for (int x = 0; x < transform.Width; x++)
+        {
+            var xx = x;
+            tasks.Add(Task.Run(() =>
+            {
+                for (int y = 0; y < transform.Height; y++)
+                {
+                    transform.AddPoint(xx, y);
+                }
+            }));
+        }
+        Task.WaitAll(tasks.ToArray());
+        List<HoughLine> lines = transform.GetLines();
 
         var bitmap = new Bitmap(image);
         DrawLines(bitmap, lines);

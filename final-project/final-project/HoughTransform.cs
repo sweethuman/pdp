@@ -47,25 +47,6 @@ public class HoughTransform
         }
     }
 
-
-    public void AddPoints()
-    {
-        List<Task> tasks = new List<Task>();
-        for (int x = 0; x < _image.Width; x++)
-        {
-            var xx = x;
-            tasks.Add(Task.Run(() =>
-            {
-                for (int y = 0; y < this.Height; y++)
-                {
-                    AddPoint(xx, y);
-                }
-            }));
-        }
-
-        Task.WaitAll(tasks.ToArray());
-    }
-
     public void AddPoint(int x, int y)
     {
         Color pixel;
